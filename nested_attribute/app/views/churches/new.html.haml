@@ -1,0 +1,17 @@
+.col.col-md-4.col-md-offset-4
+  .text-center
+    %h1 New Church
+  = simple_form_for @church do |f|
+    = f.error_notification
+    .form-group
+      = f.input :description, as: :text, placeholder: 'Description of church', class: 'form-control'
+      = f.input :website, placeholder: 'Enter website', class: 'form-control'
+    = f.simple_fields_for :services do |s|
+      .form-group
+        = s.input :start_time, as: :datetime, class: 'form-control'
+      .form-group
+        = s.input :day_of_week, as: :decimal, placeholder: 'Day of week', class: 'form-control'
+      .form-group
+        = s.input :location, placeholder: 'Location', class: 'form-control'
+    .text-center
+      = f.button :submit, class: 'btn btn-success'
